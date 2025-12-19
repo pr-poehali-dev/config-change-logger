@@ -7,6 +7,7 @@ import { ChangelogTab } from '@/components/monitoring/ChangelogTab';
 import { AlertsTab } from '@/components/monitoring/AlertsTab';
 import { AnalyticsTab } from '@/components/monitoring/AnalyticsTab';
 import { SettingsTab } from '@/components/monitoring/SettingsTab';
+import { AgentsTab } from '@/components/monitoring/AgentsTab';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -113,10 +114,14 @@ const Index = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid">
+          <TabsList className="grid w-full grid-cols-6 lg:w-auto lg:inline-grid">
             <TabsTrigger value="dashboard" className="gap-2">
               <Icon name="LayoutDashboard" size={16} />
               Дашборд
+            </TabsTrigger>
+            <TabsTrigger value="agents" className="gap-2">
+              <Icon name="Server" size={16} />
+              Агенты
             </TabsTrigger>
             <TabsTrigger value="changelog" className="gap-2">
               <Icon name="FileText" size={16} />
@@ -138,6 +143,10 @@ const Index = () => {
 
           <TabsContent value="dashboard">
             <DashboardTab stats={stats} mockChanges={mockChanges} />
+          </TabsContent>
+
+          <TabsContent value="agents">
+            <AgentsTab />
           </TabsContent>
 
           <TabsContent value="changelog">

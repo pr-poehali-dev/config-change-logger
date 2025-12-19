@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "Test agent data reception",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "system": {
+          "hostname": "test-server",
+          "ip": "192.168.1.100",
+          "os": "Windows Server 2022",
+          "cpu": 45,
+          "memory": 68,
+          "disk": 72
+        },
+        "changes": [
+          {
+            "file": "C:\\config\\test.conf",
+            "checksum": "abc123def456",
+            "timestamp": "2024-12-19T14:30:00",
+            "user": "admin"
+          }
+        ],
+        "timestamp": "2024-12-19T14:30:00"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "status": "received",
+        "agent": {
+          "hostname": "test-server",
+          "ip": "192.168.1.100"
+        },
+        "changes_count": 1
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}
