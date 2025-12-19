@@ -8,9 +8,10 @@ import { AlertsTab } from '@/components/monitoring/AlertsTab';
 import { AnalyticsTab } from '@/components/monitoring/AnalyticsTab';
 import { SettingsTab } from '@/components/monitoring/SettingsTab';
 import { AgentsTab } from '@/components/monitoring/AgentsTab';
+import { InstructionsTab } from '@/components/monitoring/InstructionsTab';
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('instructions');
   const [searchQuery, setSearchQuery] = useState('');
 
   const mockChanges: ConfigChange[] = [
@@ -114,7 +115,11 @@ const Index = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6 lg:w-auto lg:inline-grid">
+          <TabsList className="grid w-full grid-cols-7 lg:w-auto lg:inline-grid">
+            <TabsTrigger value="instructions" className="gap-2">
+              <Icon name="BookOpen" size={16} />
+              Инструкция
+            </TabsTrigger>
             <TabsTrigger value="dashboard" className="gap-2">
               <Icon name="LayoutDashboard" size={16} />
               Дашборд
@@ -140,6 +145,10 @@ const Index = () => {
               Настройки
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="instructions">
+            <InstructionsTab />
+          </TabsContent>
 
           <TabsContent value="dashboard">
             <DashboardTab stats={stats} mockChanges={mockChanges} />
