@@ -27,7 +27,7 @@ except ImportError:
     sys.exit(1)
 
 # Configuration
-API_ENDPOINT = "https://functions.poehali.dev/a22df9d8-5c25-4f3c-8bc1-7621149ed218"
+API_ENDPOINT = "https://functions.vadim.frolunin/a22df9d8-5c25-4f3c-8bc1-7621149ed218"
 CHECK_INTERVAL = 60  # seconds
 
 # Paths to monitor (edit as needed)
